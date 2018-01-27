@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  lifeTime: 0.2
+  lifeTime: 1
   destroyerLayers:
     serializedVersion: 2
     m_Bits: 256

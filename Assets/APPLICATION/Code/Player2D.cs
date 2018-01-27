@@ -22,6 +22,7 @@ public class Player2D : MonoBehaviour {
 
 	private Rigidbody2D _rigidbody;
 	private Collider2D _collider;
+	private Animator _anim;
 
 	private Transform oneWayPlatform;
 	private Transform prevOneWayPlatform;
@@ -30,6 +31,7 @@ public class Player2D : MonoBehaviour {
 	void Start () {
 		_rigidbody = GetComponent<Rigidbody2D> ();
 		_collider = GetComponent<Collider2D> ();
+		_anim = GetComponentInChildren<Animator> ();
 		isFacingRight = transform.localScale.x > 0;
 	}
 
@@ -62,6 +64,10 @@ public class Player2D : MonoBehaviour {
 		else
 			_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
 
+		_anim.SetBool ("grounded", isGrounded);
+		_anim.SetFloat ("hSpeed", Mathf.Abs(_rigidbody.velocity.x));
+		_anim.SetFloat ("vSpeed", _rigidbody.velocity.y);
+
 	}
 
 	// Update is called once per frame
@@ -93,6 +99,7 @@ public class Player2D : MonoBehaviour {
 			} else {
 				_rigidbody.velocity = Vector3.zero;
 				_rigidbody.AddForce (new Vector2 (0, jumpForce));
+				_anim.SetFloat ("vSpeed", _rigidbody.velocity.y);
 			}
 		}
 	}
@@ -100,6 +107,7 @@ public class Player2D : MonoBehaviour {
 	void Shoot() {
 		_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
 		if (currentPapers > 0) {
+			_anim.SetTrigger ("shoot");
 			_spawner.SpawnObject ();
 			currentPapers -= 1;
 		}

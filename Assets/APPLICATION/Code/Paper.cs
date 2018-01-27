@@ -42,6 +42,7 @@ public class Paper : Spawnable {
 
 	public override void SetActiveState()
 	{		
+		//gameObject.SetActive (true);
 		Active = true;
 	}
 
@@ -50,5 +51,6 @@ public class Paper : Spawnable {
 		Active = false;
 		dir = Vector3.zero;
 		t = 0;
+		gameObject.SetActive (false);
 	}
 }

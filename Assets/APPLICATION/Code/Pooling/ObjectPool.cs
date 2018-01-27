@@ -28,6 +28,7 @@ public class ObjectPool : MonoBehaviour {
 		if (_available.Count > 0)
 		{
 			GameObject go = _available[0];
+			go.SetActive (true);
 			go.SendMessage("SetActiveState", SendMessageOptions.RequireReceiver);
 			_available.RemoveAt(0);
 			return go;
