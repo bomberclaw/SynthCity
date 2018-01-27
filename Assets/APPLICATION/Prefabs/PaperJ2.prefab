@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 61048480897200922}
   - component: {fileID: 50276723386172634}
   m_Layer: 10
-  m_Name: Paper
-  m_TagString: Untagged
+  m_Name: PaperJ2
+  m_TagString: PaperJ2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e8c5588c06dbd140833a369a1901a0c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.75178415, g: 0.81324565, b: 0.99264705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

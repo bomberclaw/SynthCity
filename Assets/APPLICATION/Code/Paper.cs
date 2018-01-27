@@ -8,15 +8,22 @@ public class Paper : Spawnable {
 	public float lifeTime;
 	public LayerMask destroyerLayers;
 
+	private Vector3 dir = Vector3.zero;
+
 	private float t = 0;
 
 	void Update()
 	{
 		if (Active) {
-			if(Spawner.transform.parent.localScale.x > 0)
-				transform.Translate (Vector3.right * speed * Time.deltaTime);
-			else
-				transform.Translate (Vector3.left * speed * Time.deltaTime);
+
+			if (dir == Vector3.zero) {
+				if (Spawner.transform.parent.localScale.x > 0)
+					dir = Vector3.right;
+				else
+					dir = Vector3.left;
+			}
+
+			transform.Translate (dir * speed * Time.deltaTime);
 
 			t += Time.deltaTime;
 			if (t >= lifeTime) {
@@ -34,13 +41,14 @@ public class Paper : Spawnable {
 	}
 
 	public override void SetActiveState()
-	{
+	{		
 		Active = true;
 	}
 
 	public override void SetInactiveState()
 	{
 		Active = false;
+		dir = Vector3.zero;
 		t = 0;
 	}
 }

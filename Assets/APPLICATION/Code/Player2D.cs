@@ -35,7 +35,7 @@ public class Player2D : MonoBehaviour {
 
 	void FixedUpdate() {
 		
-		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveHorizontal = Input.GetAxis ("Horizontal" + playerId.ToString());
 
 		Vector3 startPoint = groundCheck.position - new Vector3 (_collider.bounds.size.x / 2, 0, 0);
 		Vector3 endPoint = groundCheck.position + new Vector3 (_collider.bounds.size.x / 2, 0, 0);
@@ -49,7 +49,7 @@ public class Player2D : MonoBehaviour {
 		Debug.DrawLine (startPoint, endPoint, Color.blue);
 		isWalled = Physics2D.Linecast (startPoint, endPoint, whatIsWall);
 
-		Vector3 move = new Vector3 (moveHorizontal * speed, _rigidbody.velocity.y, 0f);
+		Vector3 move = new Vector3 (moveHorizontal * speed * Time.deltaTime, _rigidbody.velocity.y, 0f);
 
 		if (moveHorizontal < 0 && isFacingRight) {
 			Flip ();
@@ -67,11 +67,11 @@ public class Player2D : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetButtonDown ("Jump")) {
+		if (Input.GetButtonDown ("Jump" + playerId.ToString())) {
 			Jump ();
 		}
 
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetButtonDown ("Shoot" + playerId.ToString())) {
 			Shoot ();
 		}
 	}
@@ -86,12 +86,11 @@ public class Player2D : MonoBehaviour {
 
 	void Jump() {
 		if (isGrounded) {
-			if (Input.GetAxis ("Vertical") < 0 && oneWayPlatform != null) {
+			if (Input.GetAxis ("Vertical" + playerId.ToString()) < 0 && oneWayPlatform != null) {
 				prevOneWayPlatform = oneWayPlatform;
 				Physics2D.IgnoreCollision (_collider, oneWayPlatform.GetComponent<Collider2D> ());
 				StartCoroutine (ReverseIgnoreCollision ());
 			} else {
-				Debug.Log ("Jump", this);
 				_rigidbody.velocity = Vector3.zero;
 				_rigidbody.AddForce (new Vector2 (0, jumpForce));
 			}
@@ -99,6 +98,7 @@ public class Player2D : MonoBehaviour {
 	}
 
 	void Shoot() {
+		_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
 		if (currentPapers > 0) {
 			_spawner.SpawnObject ();
 			currentPapers -= 1;
@@ -110,16 +110,19 @@ public class Player2D : MonoBehaviour {
 		if (col.gameObject.layer == 11) {
 			oneWayPlatform = col.gameObject.transform;
 		}
-		// Si colisiona con su reloader
-		else if (col.gameObject.tag == "ReloaderJ" + playerId.ToString()) {
-			currentPapers = maxPapers;
-		}
 	}
 
 	void OnCollisionExit2D(Collision2D col) {
 		// Si colisiona con una OneWayPlatform
 		if (col.gameObject.layer == 11) {
 			oneWayPlatform = null;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		
+		if (other.gameObject.tag == "ReloaderJ" + playerId.ToString()) {
+			currentPapers = maxPapers;
 		}
 	}
 

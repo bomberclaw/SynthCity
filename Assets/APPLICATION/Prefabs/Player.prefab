@@ -234,11 +234,13 @@ MonoBehaviour:
   jumpForce: 400
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 6400
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 4352
   _spawner: {fileID: 114199924718089210}
+  maxPapers: 5
+  currentPapers: 5
   groundCheck: {fileID: 4714304276138690}
   wallCheck: {fileID: 4356097975981216}
 --- !u!212 &212703293521946876
@@ -272,9 +274,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 9e8c5588c06dbd140833a369a1901a0c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97647065, g: 0.6392157, b: 0.92549026, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ReloaderJ1
   - ReloaderJ2
+  - PaperJ1
+  - PaperJ2
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Paper
   - OneWayPlatform
   - Reloader
-  - 
-  - 
+  - NPCBound
+  - NPC
   - 
   - 
   - 
