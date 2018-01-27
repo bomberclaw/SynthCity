@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: fb5e8bf908be6444d99519f03a4f083b
-timeCreated: 1517068283
+guid: 1ee776009ff17084a997a77fe26561be
+timeCreated: 1517072158
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Chaboncinspritesheet_0
-    21300002: Chaboncinspritesheet_1
-    21300004: Chaboncinspritesheet_2
-    21300006: Chaboncinspritesheet_3
-    21300008: Chaboncinspritesheet_4
-    21300010: Chaboncinspritesheet_5
-    21300012: Chaboncinspritesheet_6
-    21300014: Chaboncinspritesheet_7
-    21300016: Chaboncinspritesheet_8
-    21300018: Chaboncinspritesheet_9
+    21300000: MinitaSpriteSheet_0
+    21300002: MinitaSpriteSheet_1
+    21300004: MinitaSpriteSheet_2
+    21300006: MinitaSpriteSheet_3
+    21300008: MinitaSpriteSheet_4
+    21300010: MinitaSpriteSheet_5
+    21300012: MinitaSpriteSheet_6
+    21300014: MinitaSpriteSheet_7
+    21300016: MinitaSpriteSheet_8
+    21300018: MinitaSpriteSheet_9
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chaboncinspritesheet_0
+      name: MinitaSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -107,7 +107,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_1
+      name: MinitaSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 50
@@ -121,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_2
+      name: MinitaSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 100
@@ -135,7 +135,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_3
+      name: MinitaSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 150
@@ -149,7 +149,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_4
+      name: MinitaSpriteSheet_4
       rect:
         serializedVersion: 2
         x: 200
@@ -163,7 +163,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_5
+      name: MinitaSpriteSheet_5
       rect:
         serializedVersion: 2
         x: 250
@@ -177,7 +177,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_6
+      name: MinitaSpriteSheet_6
       rect:
         serializedVersion: 2
         x: 300
@@ -191,7 +191,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_7
+      name: MinitaSpriteSheet_7
       rect:
         serializedVersion: 2
         x: 350
@@ -205,7 +205,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_8
+      name: MinitaSpriteSheet_8
       rect:
         serializedVersion: 2
         x: 400
@@ -219,7 +219,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Chaboncinspritesheet_9
+      name: MinitaSpriteSheet_9
       rect:
         serializedVersion: 2
         x: 450
