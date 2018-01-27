@@ -26,6 +26,7 @@ public class Player2D : MonoBehaviour {
 
 	private Transform oneWayPlatform;
 	private Transform prevOneWayPlatform;
+	private Vector3 initialPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,7 @@ public class Player2D : MonoBehaviour {
 		_collider = GetComponent<Collider2D> ();
 		_anim = GetComponentInChildren<Animator> ();
 		isFacingRight = transform.localScale.x > 0;
+		initialPosition = transform.position + Vector3.up;
 	}
 
 	void FixedUpdate() {
@@ -104,6 +106,12 @@ public class Player2D : MonoBehaviour {
 		}
 	}
 
+	void Bounce(float force) {
+		_rigidbody.velocity = Vector3.zero;
+		_rigidbody.AddForce (new Vector2 (0, force));
+		_anim.SetFloat ("vSpeed", _rigidbody.velocity.y);
+	}
+
 	void Shoot() {
 		_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
 		if (currentPapers > 0) {
@@ -129,8 +137,11 @@ public class Player2D : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		
-		if (other.gameObject.tag == "ReloaderJ" + playerId.ToString()) {
+		if (other.gameObject.tag == "ReloaderJ" + playerId.ToString ()) {
 			currentPapers = maxPapers;
+		} else if (other.gameObject.name.Contains ("Death")) {
+			currentPapers = 0;
+			transform.position = initialPosition;
 		}
 	}
 
