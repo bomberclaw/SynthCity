@@ -43,49 +43,51 @@ public class Player2D : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		
-		float moveHorizontal = Input.GetAxis ("Horizontal" + playerId.ToString());
+		if (GameManager.Instance.playing) {
+			float moveHorizontal = Input.GetAxis ("Horizontal" + playerId.ToString ());
 
-		Vector3 startPoint = groundCheck.position - new Vector3 (_collider.bounds.size.x / 2, 0, 0);
-		Vector3 endPoint = groundCheck.position + new Vector3 (_collider.bounds.size.x / 2, 0, 0);
+			Vector3 startPoint = groundCheck.position - new Vector3 (_collider.bounds.size.x / 2, 0, 0);
+			Vector3 endPoint = groundCheck.position + new Vector3 (_collider.bounds.size.x / 2, 0, 0);
 
-		Debug.DrawLine (startPoint, endPoint, Color.green);
-		isGrounded = Physics2D.Linecast (startPoint, endPoint, whatIsGround);
+			Debug.DrawLine (startPoint, endPoint, Color.green);
+			isGrounded = Physics2D.Linecast (startPoint, endPoint, whatIsGround);
 
-		startPoint = wallCheck.position - new Vector3 (0, _collider.bounds.size.y / 2, 0);
-		endPoint = wallCheck.position + new Vector3 (0, _collider.bounds.size.y / 2, 0);
+			startPoint = wallCheck.position - new Vector3 (0, _collider.bounds.size.y / 2, 0);
+			endPoint = wallCheck.position + new Vector3 (0, _collider.bounds.size.y / 2, 0);
 
-		Debug.DrawLine (startPoint, endPoint, Color.blue);
-		isWalled = Physics2D.Linecast (startPoint, endPoint, whatIsWall);
+			Debug.DrawLine (startPoint, endPoint, Color.blue);
+			isWalled = Physics2D.Linecast (startPoint, endPoint, whatIsWall);
 
-		Vector3 move = new Vector3 (moveHorizontal * speed * Time.deltaTime, _rigidbody.velocity.y, 0f);
+			Vector3 move = new Vector3 (moveHorizontal * speed * Time.deltaTime, _rigidbody.velocity.y, 0f);
 
-		if (moveHorizontal < 0 && isFacingRight) {
-			Flip ();
-		} else if (moveHorizontal > 0 && !isFacingRight) {
-			Flip ();
+			if (moveHorizontal < 0 && isFacingRight) {
+				Flip ();
+			} else if (moveHorizontal > 0 && !isFacingRight) {
+				Flip ();
+			}
+
+			if (!isWalled)
+				_rigidbody.velocity = move;
+			else
+				_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
+
+			_anim.SetBool ("grounded", isGrounded);
+			_anim.SetFloat ("hSpeed", Mathf.Abs (_rigidbody.velocity.x));
+			_anim.SetFloat ("vSpeed", _rigidbody.velocity.y);
 		}
-
-		if (!isWalled)
-			_rigidbody.velocity = move;
-		else
-			_rigidbody.velocity = new Vector3 (0, _rigidbody.velocity.y, 0f);
-
-		_anim.SetBool ("grounded", isGrounded);
-		_anim.SetFloat ("hSpeed", Mathf.Abs(_rigidbody.velocity.x));
-		_anim.SetFloat ("vSpeed", _rigidbody.velocity.y);
 
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (GameManager.Instance.playing) {
+			if (Input.GetButtonDown ("Jump" + playerId.ToString ())) {
+				Jump ();
+			}
 
-		if (Input.GetButtonDown ("Jump" + playerId.ToString())) {
-			Jump ();
-		}
-
-		if (Input.GetButtonDown ("Shoot" + playerId.ToString())) {
-			Shoot ();
+			if (Input.GetButtonDown ("Shoot" + playerId.ToString ())) {
+				Shoot ();
+			}
 		}
 	}
 

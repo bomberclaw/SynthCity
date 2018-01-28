@@ -21,8 +21,6 @@ public class NPC : MonoBehaviour {
     public GameObject particlePlayer2;
     public GameObject  particleNeutral;
 
-
-
     private AudioSource _audio;
 
 	void Start() {
@@ -48,19 +46,27 @@ public class NPC : MonoBehaviour {
 	void ChangeTeam(Team targetTeam) {
 		if (currentTeam != targetTeam) { 
 			_audio.Play ();
+			Team aux = currentTeam;
 			currentTeam = targetTeam;
 			switch (currentTeam) {
 			case Team.J1:
 				_renderer.color = colorJ1;
-                    Instantiate(particlePlayer1 , transform.position , Quaternion.identity);
+				Instantiate (particlePlayer1, transform.position, Quaternion.identity);
+				GameManager.Instance.player1Score += 1;
                     break;
 			case Team.J2:
 				_renderer.color = colorJ2;
-                    Instantiate(particlePlayer2 , transform.position , Quaternion.identity);
+                Instantiate(particlePlayer2 , transform.position , Quaternion.identity);
+				GameManager.Instance.player2Score += 1;
                     break;
 			case Team.NONE:
 				_renderer.color = colorNeutral;
-                    Instantiate(particleNeutral , transform.position , Quaternion.identity);
+				Instantiate (particleNeutral, transform.position, Quaternion.identity);
+				if (aux == Team.J1) {
+					GameManager.Instance.player1Score -= 1;
+				} else if (aux == Team.J2) {
+					GameManager.Instance.player2Score -= 1;
+				}
                     break;
 			}
 		}
