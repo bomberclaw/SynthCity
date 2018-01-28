@@ -17,6 +17,12 @@ public class NPC : MonoBehaviour {
 	public Color colorJ2;
 	public Color colorNeutral;
 
+    public GameObject particlePlayer1;
+    public GameObject particlePlayer2;
+    public GameObject  particleNeutral;
+
+
+
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "PaperJ1") {
 			if (currentTeam == Team.NONE) {
@@ -38,12 +44,16 @@ public class NPC : MonoBehaviour {
 		switch (currentTeam) {
 		case Team.J1:
 			_renderer.color = colorJ1;
+            Instantiate(particlePlayer1 , transform.position , Quaternion.identity);
+
 			break;
 		case Team.J2:
 			_renderer.color = colorJ2;
+            Instantiate(particlePlayer2 , transform.position , Quaternion.identity);
 			break;
 		case Team.NONE:
 			_renderer.color = colorNeutral;
+            Instantiate(particleNeutral , transform.position , Quaternion.identity);
 			break;
 		}
 	}
