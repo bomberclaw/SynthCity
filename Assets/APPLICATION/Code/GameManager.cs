@@ -70,10 +70,12 @@ public class GameManager : MonoBehaviour {
 					Debug.Log ("player 1 wins");
 					wins1.gameObject.SetActive (true);
 					playing = false;
+					StartCoroutine (WaitRandom ());
 				} else if (player2Score > player1Score) {
 					Debug.Log ("player 2 wins");
 					wins2.gameObject.SetActive (true);
 					playing = false;
+					StartCoroutine (WaitRandom ());
 				}
 			}
 
@@ -89,5 +91,10 @@ public class GameManager : MonoBehaviour {
 
 	public void Restart() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+	}
+
+	private IEnumerator WaitRandom() {
+		yield return new WaitForSeconds(5);
+		SceneManager.LoadScene ("MainMenu");
 	}
 }
