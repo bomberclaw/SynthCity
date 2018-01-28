@@ -52,7 +52,8 @@ public class NPC : MonoBehaviour {
 			switch (currentTeam) {
 			case Team.J1:
 				_renderer.color = colorJ1;
-                    Instantiate(particlePlayer1 , transform.position , Quaternion.identity);
+              
+                    Debug.Log(Instantiate(particlePlayer1 , transform.position , Quaternion.identity));
                     break;
 			case Team.J2:
 				_renderer.color = colorJ2;
