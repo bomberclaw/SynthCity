@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour {
 	private float min = 0;
 	private float sec = 0;
 
+	public int player1Score = 0;
+	public int player2Score = 0;
+
 	public static GameManager Instance
 	{
 		get
@@ -53,14 +56,16 @@ public class GameManager : MonoBehaviour {
 				Debug.Log ("Timer: " + min.ToString ("00") + ":" + sec.ToString ("00"));
 			else
 				Debug.Log ("Timer: " + sec.ToString ("00"));
-		}
-	}
 
-	public void GameOver(string winner) {
-		if (winner == "j1") {
-			//Player 1 Wins
-		} else {
-			//Player 2 Wins
+			if (NPCManager.Instance.npcList.Length == (player1Score + player2Score)) {
+				if (player1Score > player2Score) {
+					Debug.Log ("player 1 wins");
+					playing = false;
+				} else if (player2Score > player1Score) {
+					Debug.Log ("player 2 wins");
+					playing = false;
+				}
+			}
 		}
 	}
 
