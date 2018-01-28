@@ -29,7 +29,7 @@ public class ScoreChanger : MonoBehaviour
 
     }
 
-   /* public void Update()
+  /*  public void Update()
     {
         if (Input.anyKeyDown) {
             SetValue(Random.Range(-100f, 100f));
@@ -49,6 +49,11 @@ public class ScoreChanger : MonoBehaviour
         StartCoroutine(textResize(desiredScale,duration));
 
 
+    }
+
+    public void SetTime (string t)
+    {
+        text.text = t;
     }
 
 
