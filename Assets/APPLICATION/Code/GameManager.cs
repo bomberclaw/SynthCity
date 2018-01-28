@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour {
 	public Text score2;
 	public Text temerText;
 
+	public Image wins1;
+	public Image wins2;
+
 	public static GameManager Instance
 	{
 		get
@@ -65,9 +68,11 @@ public class GameManager : MonoBehaviour {
 			if (NPCManager.Instance.npcList.Length == (player1Score + player2Score)) {
 				if (player1Score > player2Score) {
 					Debug.Log ("player 1 wins");
+					wins1.gameObject.SetActive (true);
 					playing = false;
 				} else if (player2Score > player1Score) {
 					Debug.Log ("player 2 wins");
+					wins2.gameObject.SetActive (true);
 					playing = false;
 				}
 			}
