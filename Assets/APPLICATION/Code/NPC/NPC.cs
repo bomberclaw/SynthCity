@@ -17,6 +17,12 @@ public class NPC : MonoBehaviour {
 	public Color colorJ2;
 	public Color colorNeutral;
 
+	private AudioSource _audio;
+
+	void Start() {
+		_audio = GetComponent<AudioSource> ();
+	}
+
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "PaperJ1") {
 			if (currentTeam == Team.NONE) {
@@ -34,17 +40,20 @@ public class NPC : MonoBehaviour {
 	}
 
 	void ChangeTeam(Team targetTeam) {
-		currentTeam = targetTeam;
-		switch (currentTeam) {
-		case Team.J1:
-			_renderer.color = colorJ1;
-			break;
-		case Team.J2:
-			_renderer.color = colorJ2;
-			break;
-		case Team.NONE:
-			_renderer.color = colorNeutral;
-			break;
+		if (currentTeam != targetTeam) { 
+			_audio.Play ();
+			currentTeam = targetTeam;
+			switch (currentTeam) {
+			case Team.J1:
+				_renderer.color = colorJ1;
+				break;
+			case Team.J2:
+				_renderer.color = colorJ2;
+				break;
+			case Team.NONE:
+				_renderer.color = colorNeutral;
+				break;
+			}
 		}
 	}
 }

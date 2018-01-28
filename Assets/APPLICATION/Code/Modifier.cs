@@ -41,7 +41,7 @@ public class Modifier : MonoBehaviour {
 		if (other.gameObject.name.Contains ("Player")) {
 			switch (mType) {
 			case ModifierType.EXTRA_SPEED:
-				other.gameObject.SendMessage ("IncrementSpeed", 2, SendMessageOptions.RequireReceiver);
+				other.gameObject.SendMessage ("IncrementSpeed", 1.5f, SendMessageOptions.RequireReceiver);
 				break;
 			case ModifierType.TRANSPORT:
 				Vector3 aux = GameManager.Instance.player1.transform.position;

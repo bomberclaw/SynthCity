@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4326acef75ab74a499c12d23c4e14d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  lifeTime: 1
+  speed: 7
+  lifeTime: 1.5
   destroyerLayers:
     serializedVersion: 2
     m_Bits: 256
