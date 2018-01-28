@@ -17,11 +17,11 @@ public class NPC : MonoBehaviour {
 	public Color colorJ2;
 	public Color colorNeutral;
 
-    public GameObject particlePlayer1;
-    public GameObject particlePlayer2;
-    public GameObject  particleNeutral;
+	private AudioSource _audio;
 
-
+	void Start() {
+		_audio = GetComponent<AudioSource> ();
+	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "PaperJ1") {
@@ -40,21 +40,20 @@ public class NPC : MonoBehaviour {
 	}
 
 	void ChangeTeam(Team targetTeam) {
-		currentTeam = targetTeam;
-		switch (currentTeam) {
-		case Team.J1:
-			_renderer.color = colorJ1;
-            Instantiate(particlePlayer1 , transform.position , Quaternion.identity);
-
-			break;
-		case Team.J2:
-			_renderer.color = colorJ2;
-            Instantiate(particlePlayer2 , transform.position , Quaternion.identity);
-			break;
-		case Team.NONE:
-			_renderer.color = colorNeutral;
-            Instantiate(particleNeutral , transform.position , Quaternion.identity);
-			break;
+		if (currentTeam != targetTeam) { 
+			_audio.Play ();
+			currentTeam = targetTeam;
+			switch (currentTeam) {
+			case Team.J1:
+				_renderer.color = colorJ1;
+				break;
+			case Team.J2:
+				_renderer.color = colorJ2;
+				break;
+			case Team.NONE:
+				_renderer.color = colorNeutral;
+				break;
+			}
 		}
 	}
 }
