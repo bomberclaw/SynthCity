@@ -150,4 +150,9 @@ public class Player2D : MonoBehaviour {
 		Physics2D.IgnoreCollision (_collider, prevOneWayPlatform.GetComponent<Collider2D> (), false);
 		prevOneWayPlatform = null;
 	}
+
+	void IncrementSpeed(float plus) {
+		speed *= plus;
+	}
+
 }
