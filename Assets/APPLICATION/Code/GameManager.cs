@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour {
 
 	public Player2D player1;
 	public Player2D player2;
+	public bool playing;
+
+	private float timer = 0;
+	private float min = 0;
+	private float sec = 0;
 
 	public static GameManager Instance
 	{
@@ -25,6 +30,29 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 			return _instance;
+		}
+	}
+
+	void Start() {
+		playing = true;
+	}
+
+	void Update() {
+		if (playing) {
+			timer += Time.deltaTime;
+			if (timer >= 1) {
+				sec += 1;
+				timer = 0;
+			}
+			if (sec > 59) {
+				min += 1;
+				sec = 0;
+			}
+
+			if (min > 0)
+				Debug.Log ("Timer: " + min.ToString ("00") + ":" + sec.ToString ("00"));
+			else
+				Debug.Log ("Timer: " + sec.ToString ("00"));
 		}
 	}
 
