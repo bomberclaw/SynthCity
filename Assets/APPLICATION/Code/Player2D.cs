@@ -160,7 +160,7 @@ public class Player2D : MonoBehaviour {
 	}
 
 	private IEnumerator ReverseIgnoreCollision() {
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.9f);
 		Physics2D.IgnoreCollision (_collider, prevOneWayPlatform.GetComponent<Collider2D> (), false);
 		prevOneWayPlatform = null;
 	}
