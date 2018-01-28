@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour {
 
 	public int player1Score = 0;
 	public int player2Score = 0;
+
+	public Text score1;
+	public Text score2;
+	public Text temerText;
 
 	public static GameManager Instance
 	{
@@ -53,9 +58,9 @@ public class GameManager : MonoBehaviour {
 			}
 
 			if (min > 0)
-				Debug.Log ("Timer: " + min.ToString ("00") + ":" + sec.ToString ("00"));
+				temerText.text = min.ToString ("00") + ":" + sec.ToString ("00");
 			else
-				Debug.Log ("Timer: " + sec.ToString ("00"));
+				temerText.text = sec.ToString ("00");
 
 			if (NPCManager.Instance.npcList.Length == (player1Score + player2Score)) {
 				if (player1Score > player2Score) {
@@ -66,6 +71,10 @@ public class GameManager : MonoBehaviour {
 					playing = false;
 				}
 			}
+
+			score1.text = player1Score.ToString ();
+			score2.text = player2Score.ToString ();
+
 		}
 	}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2D : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class Player2D : MonoBehaviour {
 	public Spawner _spawner;
 	public int maxPapers = 5;
 	public int currentPapers = 5;
+
+	public Text ammo;
 
 	public AudioClip sJump;
 	public AudioClip sShoot;
@@ -88,6 +91,8 @@ public class Player2D : MonoBehaviour {
 			if (Input.GetButtonDown ("Shoot" + playerId.ToString ())) {
 				Shoot ();
 			}
+
+			ammo.text = currentPapers.ToString ();
 		}
 	}
 
