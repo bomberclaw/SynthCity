@@ -229,8 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTeam: 0
   _renderer: {fileID: 212000713197851818}
-  colorJ1: {r: 0, g: 0.75172424, b: 1, a: 1}
-  colorJ2: {r: 1, g: 0, b: 0.8896551, a: 1}
+  colorJ1: {r: 1, g: 0, b: 0.8896551, a: 1}
+  colorJ2: {r: 0, g: 0.75172424, b: 1, a: 1}
   colorNeutral: {r: 1, g: 1, b: 1, a: 1}
   particlePlayer1: {fileID: 1750337537694716, guid: b3c0ecd6a62b3ce42b6e22884214b547,
     type: 2}
